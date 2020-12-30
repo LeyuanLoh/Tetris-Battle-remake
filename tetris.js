@@ -8,6 +8,7 @@ export class tetris {
         this.endRight = false
         this.tetrisBoard = document.getElementById('tetris-board')
         this.canDraw = true
+        this.dropBoo = false
     }
 
 
@@ -65,6 +66,7 @@ export class tetris {
     }
 
     drop() {
+        this.dropBoo = true
         while (!this.endBot) {
             this.fall()
             this.draw()
@@ -122,8 +124,6 @@ export class tetris {
     }
 
 
-
-
     end() {
         return this.endBot
     }
@@ -132,6 +132,10 @@ export class tetris {
         this.shape.forEach(segment => {
             grid[segment.x][segment.y] = true;
         })
+    }
+
+    getDrop() {
+        return this.dropBoo
     }
 
 }
