@@ -61,6 +61,7 @@ window.addEventListener('keydown', e => {
                 if (now - lastPress < 500) break
                 lastPress = now
                 tetris.drop()
+                tetris.setAllTrue()
                 generateTetris()
                 break
         }
