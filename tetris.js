@@ -1,7 +1,7 @@
 import { GRID_height, GRID_width, grid } from './tetrisBoard.js'
 
 export class tetris {
-    constructor(shape, lastRenderedTime, styleId) {
+    constructor(shape, lastRenderedTime) {
         this.shape = [...shape]
         this.lastRenderedTime = lastRenderedTime
         this.endLeft = false
@@ -9,7 +9,6 @@ export class tetris {
         this.tetrisBoard = document.getElementById('tetris-board')
         this.canDraw = true
         this.dropBoo = false
-        this.styleId = styleId
     }
 
 
@@ -21,8 +20,7 @@ export class tetris {
             const shapeElement = document.createElement('div')
             shapeElement.style.gridRowStart = segment.y
             shapeElement.style.gridColumnStart = segment.x
-            console.log('.legoTShape')
-            shapeElement.classList.add(this.styleId)
+            shapeElement.classList.add('.legoSquare')
             let cell = document.getElementById('cell ' + segment.x + " " + segment.y)
             if (cell !== null) {
                 cell.style.paddingBottom = "0%"
