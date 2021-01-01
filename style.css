@@ -26,10 +26,19 @@ body {
 }
 
 .legoSquare {
-    height: 100%;
     width: 100%;
     background-color: yellow;
     border: 0.001vh solid;
-    border-bottom: 0px;
     float: left;
+    padding-bottom: 100%;
+    border-bottom: 0%;
+}
+
+.legoTShape {
+    width: 100%;
+    background-color: pink;
+    border: 0.001vh solid;
+    float: left;
+    padding-bottom: 100%;
+    border-bottom: 0%;
 }
