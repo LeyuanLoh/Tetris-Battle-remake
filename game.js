@@ -8,6 +8,8 @@ import { LineShape } from './LineShape.js'
 
 import { LShape } from './LShape.js'
 
+import { invertedLShape } from './invertedLShape.js'
+
 let lastRenderedTime = 0
 
 
@@ -15,7 +17,7 @@ const tetrisBoard = document.getElementById('tetris-board')
 
 setGrid(tetrisBoard)
 
-var tetris = new LShape(lastRenderedTime)
+var tetris = new invertedLShape(lastRenderedTime)
 
 window.requestAnimationFrame(main)
 
