@@ -43,10 +43,19 @@ body {
     float: left;
 }
 
-.legolShape {
+.legoLineShape {
     height: 100%;
     width: 100%;
     background-color: blue;
+    border: 0.001vh solid;
+    border-bottom: 0px;
+    float: left;
+}
+
+.legoLShape {
+    height: 100%;
+    width: 100%;
+    background-color: orange;
     border: 0.001vh solid;
     border-bottom: 0px;
     float: left;

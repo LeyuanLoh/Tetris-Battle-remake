@@ -4,7 +4,9 @@ import { square } from './square.js'
 
 import { tShape } from './tShape.js'
 
-import { lShape } from './lShape.js'
+import { LineShape } from './LineShape.js'
+
+import { LShape } from './LShape.js'
 
 let lastRenderedTime = 0
 
@@ -13,7 +15,7 @@ const tetrisBoard = document.getElementById('tetris-board')
 
 setGrid(tetrisBoard)
 
-var tetris = new lShape(lastRenderedTime)
+var tetris = new LShape(lastRenderedTime)
 
 window.requestAnimationFrame(main)
 
