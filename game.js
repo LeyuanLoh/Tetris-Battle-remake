@@ -21,7 +21,9 @@ const tetrisBoard = document.getElementById('tetris-board')
 
 setGrid(tetrisBoard)
 
-var tetris = new invertedZShape(lastRenderedTime)
+var tetris
+
+generateTetris()
 
 window.requestAnimationFrame(main)
 
@@ -80,5 +82,28 @@ window.addEventListener('keydown', e => {
 })
 
 function generateTetris() {
-    tetris = new square(lastRenderedTime)
+    let num = Math.floor(Math.random() * 7)
+    switch (num) {
+        case 0:
+            tetris = new LineShape(lastRenderedTime)
+            break
+        case 1:
+            tetris = new invertedLShape(lastRenderedTime)
+            break
+        case 2:
+            tetris = new LShape(lastRenderedTime)
+            break
+        case 3:
+            tetris = new square(lastRenderedTime)
+            break
+        case 4:
+            tetris = new invertedZShape(lastRenderedTime)
+            break
+        case 5:
+            tetris = new tShape(lastRenderedTime)
+            break
+        case 6:
+            tetris = new zShape(lastRenderedTime)
+            break
+    }
 }

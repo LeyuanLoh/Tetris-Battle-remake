@@ -46,7 +46,7 @@ body {
 .legoLineShape {
     height: 100%;
     width: 100%;
-    background-color: blue;
+    background-color: lightblue;
     border: 0.001vh solid;
     border-bottom: 0px;
     float: left;
