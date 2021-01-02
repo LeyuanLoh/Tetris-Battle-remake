@@ -2,8 +2,17 @@ import { setGrid } from './tetrisBoard.js'
 
 import { square } from './square.js'
 
-import { tShape } from './t-shape.js'
+import { tShape } from './tShape.js'
 
+import { LineShape } from './LineShape.js'
+
+import { LShape } from './LShape.js'
+
+import { invertedLShape } from './invertedLShape.js'
+
+import { zShape } from './zShape.js'
+
+import { invertedZShape } from '/invertedZShape.js'
 
 let lastRenderedTime = 0
 
@@ -12,7 +21,7 @@ const tetrisBoard = document.getElementById('tetris-board')
 
 setGrid(tetrisBoard)
 
-var tetris = new tShape(lastRenderedTime)
+var tetris = new invertedZShape(lastRenderedTime)
 
 window.requestAnimationFrame(main)
 

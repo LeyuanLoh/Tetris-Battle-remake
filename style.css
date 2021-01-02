@@ -26,19 +26,64 @@ body {
 }
 
 .legoSquare {
+    height: 100%;
     width: 100%;
     background-color: yellow;
     border: 0.001vh solid;
+    border-bottom: 0px;
     float: left;
-    padding-bottom: 100%;
-    border-bottom: 0%;
 }
 
 .legoTShape {
+    height: 100%;
     width: 100%;
     background-color: pink;
     border: 0.001vh solid;
+    border-bottom: 0px;
     float: left;
-    padding-bottom: 100%;
-    border-bottom: 0%;
+}
+
+.legoLineShape {
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+    border: 0.001vh solid;
+    border-bottom: 0px;
+    float: left;
+}
+
+.legoLShape {
+    height: 100%;
+    width: 100%;
+    background-color: orange;
+    border: 0.001vh solid;
+    border-bottom: 0px;
+    float: left;
+}
+
+.legoInvertedLShape {
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+    border: 0.001vh solid;
+    border-bottom: 0px;
+    float: left;
+}
+
+.legoZShape {
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    border: 0.001vh solid;
+    border-bottom: 0px;
+    float: left;
+}
+
+.legoInvertedZShape {
+    height: 100%;
+    width: 100%;
+    background-color: green;
+    border: 0.001vh solid;
+    border-bottom: 0px;
+    float: left;
 }
