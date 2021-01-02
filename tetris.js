@@ -20,7 +20,7 @@ export class tetris {
             const shapeElement = document.createElement('div')
             shapeElement.style.gridRowStart = segment.y
             shapeElement.style.gridColumnStart = segment.x
-            shapeElement.classList.add('.legoSquare')
+            shapeElement.classList.add('legoSquare')
             let cell = document.getElementById('cell ' + segment.x + " " + segment.y)
             if (cell !== null) {
                 cell.style.paddingBottom = "0%"
