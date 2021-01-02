@@ -69,3 +69,12 @@ body {
     border-bottom: 0px;
     float: left;
 }
+
+.legoZShape {
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    border: 0.001vh solid;
+    border-bottom: 0px;
+    float: left;
+}
