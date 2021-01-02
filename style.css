@@ -78,3 +78,12 @@ body {
     border-bottom: 0px;
     float: left;
 }
+
+.legoInvertedZShape {
+    height: 100%;
+    width: 100%;
+    background-color: green;
+    border: 0.001vh solid;
+    border-bottom: 0px;
+    float: left;
+}
