@@ -42,3 +42,12 @@ body {
     border-bottom: 0px;
     float: left;
 }
+
+.legolShape {
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+    border: 0.001vh solid;
+    border-bottom: 0px;
+    float: left;
+}
