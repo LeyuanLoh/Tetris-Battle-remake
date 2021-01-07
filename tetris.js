@@ -139,4 +139,22 @@ export class tetris {
         return this.dropBoo
     }
 
+    rotate() {
+
+        this.undraw()
+
+        //The origin for each shape is always at [1]
+        for (let i = 0; i < this.shape.length; i++) {
+            let relativeX = (this.shape[1].x - this.shape[i].x)
+            let relativeY = (this.shape[1].y - this.shape[i].y)
+
+            let newRelativeX = relativeY
+            let newRelativeY = -relativeX
+
+            this.shape[i].x = newRelativeX + this.shape[1].x
+            this.shape[i].y = newRelativeY + this.shape[1].y
+        }
+
+        this.canFall()
+    }
 }

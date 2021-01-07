@@ -55,6 +55,7 @@ window.addEventListener('keydown', e => {
         switch (e.key) {
             case 'ArrowUp':
                 e.preventDefault();
+                tetris.rotate()
                 break
             case 'ArrowDown':
                 e.preventDefault();
