@@ -19,12 +19,16 @@ export class tetris {
         }
         this.shape.forEach(segment => {
             const shapeElement = document.createElement('div')
-            shapeElement.style.gridRowStart = segment.y
-            shapeElement.style.gridColumnStart = segment.x
             shapeElement.classList.add(this.styleClass)
+            shapeElement.style.position = "absolute"
+            shapeElement.style.top = "0"
+            shapeElement.style.left = "0"
+            shapeElement.style.bottom = "0"
+            shapeElement.style.right = "0"
             let cell = document.getElementById('cell ' + segment.x + " " + segment.y)
             if (cell !== null) {
-                cell.style.paddingBottom = "0%"
+                // cell.style.paddingBottom = "0px"
+                // cell.style.height = "100%"
                 cell.style.border = 0
                 cell.appendChild(shapeElement)
             }
@@ -39,6 +43,7 @@ export class tetris {
             if (cell != null) {
                 cell.innerHTML = ' '
                 cell.style.paddingBottom = "100%"
+                cell.style.height = "0%"
                 cell.style.border = "0.001vmin solid white"
                 this.canDraw = true
             }
@@ -157,4 +162,5 @@ export class tetris {
 
         this.canFall()
     }
+
 }
