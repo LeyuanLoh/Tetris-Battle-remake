@@ -1,4 +1,4 @@
-import { GRID_height, GRID_width, grid } from './tetrisBoard.js'
+import { GRID_height, GRID_width, grid, clearLine } from './tetrisBoard.js'
 
 export class tetris {
     constructor(shape, lastRenderedTime, styleClass) {
@@ -44,6 +44,25 @@ export class tetris {
                 this.canDraw = true
             }
         })
+    }
+
+    clearLines() {
+        let rowsMap = new Map()
+        this.shape.forEach(segment => {
+            if (!rowsMap.has(segment.y)) {
+                rowsMap.set(segment.y, segment.y)
+            }
+        })
+
+        let rows = new Array()
+        for (let key of rowsMap.keys()) {
+            rows.push(key)
+        }
+
+        //ascending orders
+        rows.sort(function(a, b) { return a - b })
+
+        clearLine(rows)
     }
 
     fall() {
