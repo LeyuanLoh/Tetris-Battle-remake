@@ -51,12 +51,19 @@ function main(currentTime) {
 
 let lastPress = 0;
 
+//True if a key is pressed down
+let keys = [false, false]
+
 window.addEventListener('keydown', e => {
     if (!tetris.getDrop()) {
         switch (e.key) {
             case 'ArrowUp':
+                if (keys[0] === true) {
+                    break
+                }
                 e.preventDefault();
                 tetris.rotate()
+                keys[0] = true
                 break
             case 'ArrowDown':
                 e.preventDefault();
@@ -71,46 +78,63 @@ window.addEventListener('keydown', e => {
                 tetris.moveRight()
                 break
             case ' ':
+                if (keys[1] === true) {
+                    break
+                }
                 e.preventDefault();
-                let now = Date.now();
-                if (now - lastPress < 500) break
-                lastPress = now
                 tetris.drop()
                 tetris.setAllTrue()
                 tetris.clearLines()
                 generateTetris()
+                keys[1] = true
                 break
         }
     }
 })
 
+window.addEventListener('keyup', e => {
+    switch (e.key) {
+        case 'ArrowUp':
+            e.preventDefault();
+            keys[0] = false
+            break
+        case ' ':
+            e.preventDefault();
+            keys[1] = false
+            break
+    }
+})
+
+
+
+
 function generateTetris() {
     let num = Math.floor(Math.random() * 7)
 
     //debugging purposes
-    tetris = new square(lastRenderedTime)
+    // tetris = new square(lastRenderedTime)
 
-    // switch (num) {
-    //     case 0:
-    //         tetris = new LineShape(lastRenderedTime)
-    //         break
-    //     case 1:
-    //         tetris = new invertedLShape(lastRenderedTime)
-    //         break
-    //     case 2:
-    //         tetris = new LShape(lastRenderedTime)
-    //         break
-    //     case 3:
-    //         tetris = new square(lastRenderedTime)
-    //         break
-    //     case 4:
-    //         tetris = new invertedZShape(lastRenderedTime)
-    //         break
-    //     case 5:
-    //         tetris = new tShape(lastRenderedTime)
-    //         break
-    //     case 6:
-    //         tetris = new zShape(lastRenderedTime)
-    //         break
-    // }
+    switch (num) {
+        case 0:
+            tetris = new LineShape(lastRenderedTime)
+            break
+        case 1:
+            tetris = new invertedLShape(lastRenderedTime)
+            break
+        case 2:
+            tetris = new LShape(lastRenderedTime)
+            break
+        case 3:
+            tetris = new square(lastRenderedTime)
+            break
+        case 4:
+            tetris = new invertedZShape(lastRenderedTime)
+            break
+        case 5:
+            tetris = new tShape(lastRenderedTime)
+            break
+        case 6:
+            tetris = new zShape(lastRenderedTime)
+            break
+    }
 }
