@@ -28,35 +28,28 @@ body {
 
 .legoSquare {
     background-color: yellow;
-    border: 0.001vh solid;
 }
 
 .legoTShape {
     background-color: pink;
-    border: 0.001vh solid;
 }
 
 .legoLineShape {
     background-color: lightblue;
-    border: 0.001vh solid;
 }
 
 .legoLShape {
     background-color: orange;
-    border: 0.001vh solid;
 }
 
 .legoInvertedLShape {
     background-color: blue;
-    border: 0.001vh solid;
 }
 
 .legoZShape {
     background-color: red;
-    border: 0.001vh solid;
 }
 
 .legoInvertedZShape {
     background-color: green;
-    border: 0.001vh solid;
 }
