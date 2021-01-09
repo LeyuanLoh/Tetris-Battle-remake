@@ -16,6 +16,7 @@ import { invertedZShape } from '/invertedZShape.js'
 
 let lastRenderedTime = 0
 
+let gameOver = false
 
 const tetrisBoard = document.getElementById('tetris-board')
 
@@ -28,6 +29,10 @@ generateTetris()
 window.requestAnimationFrame(main)
 
 function main(currentTime) {
+
+    if (gameOver) {
+        return
+    }
 
     tetris.draw()
 
@@ -55,7 +60,7 @@ let lastPress = 0;
 let keys = [false, false]
 
 window.addEventListener('keydown', e => {
-    if (!tetris.getDrop()) {
+    if (!tetris.getDrop() && !gameOver) {
         switch (e.key) {
             case 'ArrowUp':
                 if (keys[0] === true) {
@@ -115,6 +120,7 @@ function generateTetris() {
     // tetris = new square(lastRenderedTime)
 
     switch (num) {
+
         case 0:
             tetris = new LineShape(lastRenderedTime)
             break
@@ -136,5 +142,9 @@ function generateTetris() {
         case 6:
             tetris = new zShape(lastRenderedTime)
             break
+    }
+
+    if (!tetris.canSpawn()) {
+        gameOver = true
     }
 }

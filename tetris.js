@@ -178,4 +178,15 @@ export class tetris {
         this.canFall()
     }
 
+
+    //Must be called only after generate() in game.js
+    canSpawn() {
+        for (let i = 0; i < this.shape.length; i++) {
+            if (grid[this.shape[i].x][this.shape[i].y]) {
+                return false
+            }
+        }
+        return true
+    }
+
 }
