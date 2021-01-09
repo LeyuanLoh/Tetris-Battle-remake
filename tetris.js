@@ -10,6 +10,13 @@ export class tetris {
         this.canDraw = true
         this.dropBoo = false
         this.styleClass = styleClass
+        this.offset = [
+            [{ x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 }],
+            [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 1, y: -1 }, { x: 0, y: 2 }, { x: 1, y: 2 }],
+            [{ x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 }],
+            [{ x: 0, y: 0 }, { x: -1, y: 0 }, { x: -1, y: -1 }, { x: 0, y: 2 }, { x: -1, y: 2 }, ]
+        ]
+        this.rotIndex = 0
     }
 
 
@@ -163,7 +170,8 @@ export class tetris {
 
         this.undraw()
 
-        //The origin for each shape is always at [1]
+        let newPos = []
+
         for (let i = 0; i < this.shape.length; i++) {
             let relativeX = (this.shape[1].x - this.shape[i].x)
             let relativeY = (this.shape[1].y - this.shape[i].y)
@@ -171,13 +179,69 @@ export class tetris {
             let newRelativeX = relativeY
             let newRelativeY = -relativeX
 
-            this.shape[i].x = newRelativeX + this.shape[1].x
-            this.shape[i].y = newRelativeY + this.shape[1].y
+            let newX = newRelativeX + this.shape[1].x
+            let newY = newRelativeY + this.shape[1].y
+
+            newPos.push({ newX, newY })
+        }
+
+        if (this.Offset(newPos)) {
+            if (this.rotIndex === 3) {
+                this.rotIndex = 0
+            } else
+                this.rotIndex++
         }
 
         this.canFall()
     }
 
+    Offset(newPos) {
+        let movePosible = false
+        let endOffset = { x: 0, y: 0 }
+
+        for (let testIndex = 0; testIndex < this.offset[this.rotIndex].length; testIndex++) {
+            let offsetVal1 = this.offset[this.rotIndex][testIndex]
+            let offsetVal2 = this.offset[(this.rotIndex + 1) % 4][testIndex]
+            endOffset = { x: offsetVal1.x - offsetVal2.x, y: offsetVal1.y - offsetVal2.y }
+
+            if (this.canMovePiece(newPos, endOffset)) {
+                movePosible = true
+                break
+            }
+        }
+
+        if (movePosible) {
+            this.movePiece(newPos, endOffset)
+        }
+
+        return movePosible
+    }
+
+    canMovePiece(newPos, endOffset) {
+        for (let i = 0; i < newPos.length; i++) {
+            //the newPos + endOffset must be in the grid and grid[][] should not return true
+            if (newPos[i].newX + endOffset.x > -1 && newPos[i].newX + endOffset.x < GRID_width &&
+                newPos[i].newY - endOffset.y > -1 && newPos[i].newY - endOffset.y < GRID_height &&
+                (!grid[newPos[i].newX + endOffset.x][newPos[i].newY - endOffset.y])) {
+                continue
+            } else
+                return false
+        }
+        return true
+    }
+
+    movePiece(newPos, endOffset) {
+
+
+        for (let i = 0; i < this.shape.length; i++) {
+
+            this.shape[i].x = newPos[i].newX
+            this.shape[i].y = newPos[i].newY
+
+            this.shape[i].x += endOffset.x
+            this.shape[i].y -= endOffset.y
+        }
+    }
 
     //Must be called only after generate() in game.js
     canSpawn() {
@@ -187,6 +251,10 @@ export class tetris {
             }
         }
         return true
+    }
+
+    getShape() {
+        return this.shape
     }
 
 }
