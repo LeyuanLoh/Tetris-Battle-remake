@@ -18,15 +18,19 @@ let lastRenderedTime = 0
 
 let gameOver = false
 
+var tetris
+
+let tetrisFallSpeed = 1.5
+
 const tetrisBoard = document.getElementById('tetris-board')
 
 setGrid(tetrisBoard)
 
-var tetris
 
 generateTetris()
 
 window.requestAnimationFrame(main)
+
 
 function main(currentTime) {
 
@@ -39,9 +43,11 @@ function main(currentTime) {
     window.requestAnimationFrame(main)
 
     const secondsSinceLastRender = (currentTime - lastRenderedTime) / 1000
-    if (secondsSinceLastRender < 1 / 1.5) return
-
-    lastRenderedTime = currentTime
+    if (secondsSinceLastRender >= 1 / tetrisFallSpeed) {
+        lastRenderedTime = currentTime
+        tetris.fall()
+        return
+    }
 
     if (tetris.end()) {
         tetris.setAllTrue()
@@ -49,7 +55,7 @@ function main(currentTime) {
         generateTetris()
         return
     }
-    tetris.fall()
+
 
 
 }
@@ -88,9 +94,9 @@ window.addEventListener('keydown', e => {
                 }
                 e.preventDefault();
                 tetris.drop()
-                tetris.setAllTrue()
-                tetris.clearLines()
-                generateTetris()
+                    // tetris.setAllTrue()
+                    // tetris.clearLines()
+                    // generateTetris()
                 keys[1] = true
                 break
         }
@@ -122,25 +128,25 @@ function generateTetris() {
     switch (num) {
 
         case 0:
-            tetris = new LineShape(lastRenderedTime)
+            tetris = new LineShape()
             break
         case 1:
-            tetris = new invertedLShape(lastRenderedTime)
+            tetris = new invertedLShape()
             break
         case 2:
-            tetris = new LShape(lastRenderedTime)
+            tetris = new LShape()
             break
         case 3:
-            tetris = new square(lastRenderedTime)
+            tetris = new square()
             break
         case 4:
-            tetris = new invertedZShape(lastRenderedTime)
+            tetris = new invertedZShape()
             break
         case 5:
-            tetris = new tShape(lastRenderedTime)
+            tetris = new tShape()
             break
         case 6:
-            tetris = new zShape(lastRenderedTime)
+            tetris = new zShape()
             break
     }
 

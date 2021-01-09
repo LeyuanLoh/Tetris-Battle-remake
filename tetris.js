@@ -1,9 +1,8 @@
 import { GRID_height, GRID_width, grid, clearLine } from './tetrisBoard.js'
 
 export class tetris {
-    constructor(shape, lastRenderedTime, styleClass) {
+    constructor(shape, styleClass) {
         this.shape = [...shape]
-        this.lastRenderedTime = lastRenderedTime
         this.endLeft = false
         this.endRight = false
         this.tetrisBoard = document.getElementById('tetris-board')
