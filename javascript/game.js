@@ -6,7 +6,7 @@ import { tShape } from './shape/tShape.js'
 
 import { LineShape } from './shape/LineShape.js'
 
-import { LShape } from './shape/LShape.js'
+import { LShape } from './shape/lShape.js'
 
 import { invertedLShape } from './shape/invertedLShape.js'
 
