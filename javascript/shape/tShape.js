@@ -1,4 +1,4 @@
-import { tetris } from './tetris.js'
+import { tetris } from '../tetris.js'
 
 export class tShape extends tetris {
     constructor() {

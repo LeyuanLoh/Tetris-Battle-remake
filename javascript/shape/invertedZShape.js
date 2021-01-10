@@ -1,4 +1,4 @@
-import { tetris } from './tetris.js'
+import { tetris } from '../tetris.js'
 
 export class invertedZShape extends tetris {
     constructor() {
